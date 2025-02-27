@@ -1,4 +1,5 @@
 # ww-salmon RNA-seq Workflow
+[![Project Status: Experimental – Useable, some support, not open to feedback, unstable API.](https://getwilds.org/badges/badges/experimental.svg)](https://getwilds.org/badges/#experimental)
 
 ## Overview
 
