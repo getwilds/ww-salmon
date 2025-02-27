@@ -113,9 +113,9 @@ task SalmonQuant {
         # Paired-end quantification with best practice parameters
         salmon quant \
             -i salmon_index \
+            --libType A \
             -1 ~{fastq_r1} \
             -2 ~{fastq_r2} \
-            --libType A \
             -o ~{sample_name}_quant \
             -p ~{cpu} \
             --validateMappings \
