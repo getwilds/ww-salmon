@@ -1,0 +1,11 @@
+{
+    "SalmonRnaSeq.transcriptome_fasta": "references/transcriptome.fa",
+    "SalmonRnaSeq.fastq_r1_files": [
+      "samples/sample1_R1.fastq.gz",
+      "samples/sample2_R1.fastq.gz"
+    ],
+    "SalmonRnaSeq.fastq_r2_files": [
+      "samples/sample1_R2.fastq.gz", 
+      "samples/sample2_R2.fastq.gz"
+    ]
+}
