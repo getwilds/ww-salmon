@@ -156,24 +156,30 @@ task MergeSalmonResults {
         # Extract all quantification results
         mkdir -p quant_dirs
         for quant_dir in ~{sep=" " salmon_quant_dirs}; do
+            base_name=$(basename $quant_dir .tar.gz)
+            mkdir -p "quant_dirs/$base_name"
             tar -xzf $quant_dir -C quant_dirs/
         done
         
         # Create a list of sample names for reference
         echo "~{sep="\n" sample_names}" > sample_names.txt
         
+        # Create a list of quant directories for quantmerge
+        quant_dirs_list=()
+        for sample in ~{sep=" " sample_names}; do
+            quant_dirs_list+=("quant_dirs/${sample}_quant")
+        done
+        
         # Merge transcript-level TPM values
         salmon quantmerge \
-            --quants quant_dirs/*/quant.sf \
+            --quants "${quant_dirs_list[@]}" \
             --column TPM \
-            --genes \
             -o tpm_matrix.tsv
         
         # Merge transcript-level estimated count values
         salmon quantmerge \
-            --quants quant_dirs/*/quant.sf \
+            --quants "${quant_dirs_list[@]}" \
             --column NumReads \
-            --genes \
             -o counts_matrix.tsv
     >>>
     
